@@ -5,9 +5,11 @@
 
 package com.mycompany.maquinaexpenedora;
 
+import java.util.Scanner;
+
 /**
  *
- * @author alumne
+ * @author eloy
  */
 public class MaquinaExpenedora {
 
@@ -24,11 +26,48 @@ public class MaquinaExpenedora {
     /* Propongo que simular tres situaciones: 
     * 1. La quantitatProductes=0 -> La màquina ens ha de dir que ara mateix és buida i no pot vendre res.
     * 2. Si el preu>saldo -> La màquina ens ha de dir que el saldo és insuficient.
-    * 3. En la resta de casos (saldo >= preu) -> Compra realitzada
-    * Propongo utilizar sout para tener algo de feedback
+    * 3. 
     */
     
     public void realitzarCompra(int preu) {
+      if (quantitatProductes == 0) {
+    System.out.println("La màquina està buida i no pot vendre res.");
+} else {
+    saldo -= preu; // Resta el preu del producte al saldo del usuari
+realitzarCompra( preu); // Crida a un métodoe per a  dispensar el producte
+
+}
+
+      if (preu > saldo) {
+    System.out.println("Saldo insuficient, si us plau, recarregui el saldo.");
+} else {
+    if (saldo < preu) {
+    System.out.println("Saldo insuficient, si us plau, recarregui el saldo.");
+} else if (quantitatProductes == 0) {
+    System.out.println("Ara mateix la màquina és buida i no pot vendre res.");
+} else {
+    saldo -= preu; // Resta el preu del producte al saldo del usuari
+    quantitatProductes--; // Resta un a la quantitat de productes disponibles
+    System.out.println("Compra realitzada.");
+    realitzarCompra( preu); // Crida a un métode per a  dispensar el producte
+}
+
+}
+      if (saldo >= preu) {
+    System.out.println("Compra realitzada.");
+   
+} else {
+    System.out.println("Saldo insuficient, si us plau, recarregui el saldo.");
+    Scanner sc = new Scanner(System.in);
+System.out.print("Introduïu la quantitat a recarregar: ");
+double quantitatRecarrega = sc.nextDouble();
+
+saldo += quantitatRecarrega; // Suma la quantitat de recàrrega al saldo del usuari
+System.out.println("El saldo s'ha recarregat correctament. Saldo actual: " + saldo);
+
+}
+
+
 
     }
     
@@ -37,6 +76,10 @@ public class MaquinaExpenedora {
     * sugiero utilizar quantitatProductes = quantitatInicial en este método, para actualizarla. 
     */
     public void reabastir(int quantitat) {
+        int quantitatInicial = 0;
+        quantitatProductes = quantitatInicial;
+    System.out.println("La quantitat de productes s'ha restablert a " + quantitatInicial);
+
         
     }
     
